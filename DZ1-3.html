@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict'
+        /*
+        1. складываем 10 и 10 получаем 20
+        2. конкатенируем "20" и "10" получаем "2010"
+        3. "2010" присваиваем в переменную resalt1
+        4. с помощью console.log выводим result1 в консоль
+        */
+        let result1 = 10 + 10 + "10";
+        console.log(result1);
+
+
+        /*
+        1. конкатенируем "10" и "10" получаем "1010"
+        2. конкатенируем "1010" и "10" получаем "101010"
+        3. "101010" присваиваем в переменную resalt2
+        4. с помощью console.log выводим result1 в консоль
+        */
+        let result2 = 10 + "10" + 10;
+        console.log(result2);
+
+        /*
+        1. унарный плюс преобразует строку "10" в число 10
+        2. производим операции сложения и получаем 30
+        3. 30 присваиваем в переменную resalt3
+        4. с помощью console.log выводим result3 в консоль
+        */
+        let result3 = 10 + 10 + +"10";
+        console.log(result3);
+
+        /*
+        1. 10 делим на -0 получается -infinity
+        2. -infinity присваиваем в переменную resalt4
+        4. с помощью console.log выводим result4 в консоль
+        */
+        let result4 = 10 / -"";
+        console.log(result4);
+
+        /*
+        1. из за запятой не получается превести строку "2,5" в число поэтому получаем NaN
+        2. 10 делим на NaN получаем NaN
+        3. NaN присваиваем в переменную resalt5
+        4. с помощью console.log выводим result5 в консоль
+        */
+        let result5 = 10 / +"2,5";
+        console.log(result5);
+    </script>
+</body>
+
+</html>
