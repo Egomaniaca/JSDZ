@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h3 class="one">Заголовок</h3>
     <a class="one" href="#">ссылка</a>
@@ -17,7 +19,12 @@
     -->
 
     <script>
-
+        'use strict'
+        let Elements = document.getElementsByClassName('one');
+        for (let i = 0; i < Elements.length; i++) {
+            console.log(Elements[i].tagName);
+        };
     </script>
 </body>
+
 </html>
