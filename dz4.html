@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*  1.1(это обязательное задание) Сделайте в стиле es5, а затем в стиле es6(по аналогии из дополнительных 
+         видео -> 3 примеры наследования -> типы на es5 и es6), конструктор Product, который принимает параметры name
+         и price, сохраните их как свойства объекта.Также объекты типа Product должны иметь метод
+         make25PercentDiscount, который будет уменьшать цену в объекте на 25 %.Имейте в виду, что метод 
+         make25PercentDiscount не должен быть внутри функции - конструктора, и также не нужно создавать отдельный
+         объект - прототип(как объект transport в уроке). */
+        'use strict'
+
+
+        //------------------------------------------------------------------es5------------------------------------------------------------------
+        function ProductES5(name, price) {
+            this.name = name;
+            this.price = price;
+        }
+        ProductES5.prototype.make25PercentDiscount = function () {
+            this.price = this.price - (this.price * 25 / 100);
+        }
+        const ProductES5New = new ProductES5("coffee", 180);
+        ProductES5New.make25PercentDiscount();
+        console.log(ProductES5New);
+
+
+        //------------------------------------------------------------------es6------------------------------------------------------------------
+        class ProductES6 {
+            constructor(name, price) {
+                this.name = name;
+                this.price = price;
+            }
+            make25PercentDiscount() {
+                this.price = this.price - (this.price * 25 / 100);
+            }
+        }
+        const ProductES6New = new ProductES6("tea", 100);
+        ProductES6New.make25PercentDiscount();
+        console.log(ProductES6New);
+    </script>
+    <script>
+        /*  1.2 (это обязательное задание) Сделайте в стиле es5, а затем в стиле es6 (по аналогии из дополнительных 
+        видео -> 3 примеры наследования -> механика наследования), 
+        а) конструктор Post, который принимает параметры author, text, date и сохраняет их как свойства объекта. Объекты 
+        типа Post должны иметь метод edit, который будет принимать текст и записывать его в свойство text объекта.
+        б) конструктор AttachedPost, который принимает параметры author, text, date. Проинициализируйте эти свойства с 
+        помощью конструктора Post, чтобы не дублировать код. Также в конструкторе AttachedPost должно создаваться 
+        свойство highlighted со значением false. Унаследуйте в объектах типа AttachedPost методы из Post.
+        Объекты типа AttachedPost должны иметь метод makeTextHighlighted, который будет назначать свойству 
+        highlighted значение true. */
+        "use strict"
+
+
+        // ------------------------------------------------------------------es5------------------------------------------------------------------
+        function PostES5(author, text, date) {
+            this.author = author;
+            this.text = text;
+            this.date = date;
+        }
+
+        PostES5.prototype.edit = function (text) {
+            this.text = text;
+        }
+
+        const PostES5New = new PostES5("Maxim", "Have a good day", new Date());
+        console.log(PostES5New);
+        PostES5New.edit("Have a good weekend");
+        console.log(PostES5New);
+
+
+        function AttachedPostES5(author, text, date) {
+            PostES5.call(this, author, text, date);
+            this.highlightedES5 = false;
+        }
+
+        AttachedPostES5.prototype = Object.create(PostES5.prototype);
+        AttachedPostES5.prototype.constructor = AttachedPostES5;
+
+        AttachedPostES5.prototype.makeTextHighlightedES5 = function () {
+            this.highlightedES5 = true;
+        }
+
+        const AttachedPostES5New = new AttachedPostES5("Anastasiya", "Хорошего дня", new Date());
+        console.log(AttachedPostES5New);
+        AttachedPostES5New.makeTextHighlightedES5();
+        AttachedPostES5New.edit("Хороших выходных");
+        console.log(AttachedPostES5New);
+
+
+        //------------------------------------------------------------------es6------------------------------------------------------------------
+
+        class PostES6 {
+            constructor(author, text, date) {
+                this.author = author;
+                this.text = text;
+                this.date = date;
+            }
+            edit(text) {
+                this.text = text;
+            }
+        }
+
+        const PostES6New = new PostES6("Sergei", "How are you?", new Date());
+        console.log(PostES6New);
+        PostES6New.edit("How are your famaly?");
+        console.log(PostES6New);
+
+
+        class AttachedPostES6 extends PostES6 {
+            constructor(author, text, date) {
+                super(author, text, date);
+                this.highlightedES6 = false;
+            }
+
+            makeTextHighlightedES6() {
+                this.highlightedES6 = true;
+            }
+        }
+
+        const AttachedPostES6New = new AttachedPostES6("Alex", "Как сам?", new Date());
+        console.log(AttachedPostES6New);
+        AttachedPostES6New.makeTextHighlightedES6();
+        AttachedPostES6New.edit("Как семья?");
+        console.log(AttachedPostES6New);
+    </script>
+    <script>
+
+    </script>
+
+</body>
+
+</html>
