@@ -364,6 +364,41 @@ body {
   right: -3px;
 }
 
+.basket {
+  position: absolute;
+  z-index: 3;
+  right: 0;
+  top: 60px;
+  background: white;
+  padding: 10px;
+  border: 1px solid #ebebeb;
+  border-radius: 3px;
+  font-size: 14px;
+  color: #535353;
+}
+
+.hidden {
+  display: none;
+}
+
+.basketRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ebebeb;
+  padding-bottom: 10px;
+}
+
+.basketHeader {
+  font-weight: bold;
+}
+
+.basketTotal {
+  font-weight: bold;
+  text-align: right;
+}
+
 /*====== baner ======*/
 .banner {
   width: 100%;
@@ -648,7 +683,7 @@ body {
   text-align: left;
 }
 
-.products-item-title {
+.productsItemTitle {
   display: block;
   margin: 0 0 12px 0;
   text-transform: uppercase;
@@ -665,7 +700,7 @@ body {
   color: #5d5d5d;
 }
 
-.products-item-price {
+.productsItemPrice {
   display: block;
   margin: 0;
   font-size: 16px;
